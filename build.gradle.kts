@@ -14,13 +14,8 @@ dependencies {
 
     implementation(libs.helidon.web.server) {
         /*
-        'helidon-webserver' has some optional dependencies that we don't need.
-
-        Unfortunately, only some are listed as optional dependencies in the POM. But I'm curious, do I really need any
-        of the following modules to run a hello world-style Helidon web server program?
-          * 'helidon-common-configurable'
-          * 'helidon-common-security'
-          * 'helidon-common-tls
+        'helidon-webserver' is quite lean, but it's still bringing in more Helidon artifacts than it really needs. Through
+        trial and error, I've found certain dependencies that can omitted.
 
         The big thing we don't want is "helidon-config" because it's large (300K+) but the TLS module depends on it which
         I think is an oversight. I get this error when I ignore "helidon-config".
@@ -35,8 +30,12 @@ dependencies {
             at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
             at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
             ... 4 more
+
+        Interestingly, we can resolve this problem by creating a skeleting io.helidon.config.ConfigException class in
+        our own source code.
         */
         exclude(group = "io.helidon.common", module = "helidon-common-security")
+        exclude(group = "io.helidon.config", module = "helidon-config")
     }
 }
 

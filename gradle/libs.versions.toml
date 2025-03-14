@@ -1,9 +1,9 @@
 [versions]
 # SLF4J releases: http://www.slf4j.org/news.html
-slf4j = "2.0.12"
+slf4j = "2.0.17"
 
 # Helidon relases: https://github.com/helidon-io/helidon/releases
-helidon = "4.0.6"
+helidon = "4.2.0"
 
 [libraries]
 slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
@@ -11,4 +11,3 @@ slf4j-simple = { module = "org.slf4j:slf4j-simple", version.ref = "slf4j" }
 slf4j-jul = { module = "org.slf4j:jul-to-slf4j", version.ref = "slf4j" }
 
 helidon-web-server = { module = "io.helidon.webserver:helidon-webserver", version.ref = "helidon" }
-helidon-config = { module = "io.helidon.config:helidon-config", version.ref = "helidon" }
